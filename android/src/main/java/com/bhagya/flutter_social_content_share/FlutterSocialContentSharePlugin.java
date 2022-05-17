@@ -277,12 +277,12 @@ public class FlutterSocialContentSharePlugin implements FlutterPlugin, MethodCal
    * @param result Result
    */
   private void shareWhatsApp(String number,String text,Result result) {
-    Intent intent = new Intent(Intent.ACTION_SEND);
-    intent.setType("text/plain");
-    intent.setPackage("com.whatsapp");
-    intent.putExtra(Intent.EXTRA_TEXT, text);
+    String url = "https://api.whatsapp.com/send?phone="+number+"&text=" + URLEncoder.encode(text, "UTF-8");
+    Intent i = new Intent(Intent.ACTION_VIEW);
+    i.setData(Uri.parse(url));
     try {
-      activity.startActivity(intent);
+      startActivity(i);
+
     } catch (android.content.ActivityNotFoundException ex) {
       result.success("Whatsapp app is not installed on your device");
     }
