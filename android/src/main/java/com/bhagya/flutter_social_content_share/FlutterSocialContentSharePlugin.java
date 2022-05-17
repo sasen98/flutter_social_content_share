@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
+import java.net.URLEncoder;
 
 import io.flutter.Log;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
@@ -281,7 +282,7 @@ public class FlutterSocialContentSharePlugin implements FlutterPlugin, MethodCal
     Intent i = new Intent(Intent.ACTION_VIEW);
     i.setData(Uri.parse(url));
     try {
-      startActivity(i);
+      activity.startActivity(i);
 
     } catch (android.content.ActivityNotFoundException ex) {
       result.success("Whatsapp app is not installed on your device");
