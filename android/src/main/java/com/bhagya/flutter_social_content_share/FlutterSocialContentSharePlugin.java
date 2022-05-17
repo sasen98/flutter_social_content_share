@@ -34,6 +34,7 @@ import com.facebook.share.widget.ShareDialog;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -278,7 +279,12 @@ public class FlutterSocialContentSharePlugin implements FlutterPlugin, MethodCal
    * @param result Result
    */
   private void shareWhatsApp(String number,String text,Result result) {
-    String url = "https://api.whatsapp.com/send?phone="+number+"&text=" + URLEncoder.encode(text, "UTF-8");
+    String url = null;
+    try {
+      url = "https://api.whatsapp.com/send?phone="+number+"&text=" + URLEncoder.encode(text, "UTF-8");
+    } catch (UnsupportedEncodingException e) {
+      e.printStackTrace();
+    }
     Intent i = new Intent(Intent.ACTION_VIEW);
     i.setData(Uri.parse(url));
     try {
