@@ -2,13 +2,14 @@ group 'com.bhagya.flutter_social_content_share'
 version '1.0'
 
 buildscript {
+    ext.kotlinVersion = "2.0.20"
     repositories {
         google()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.android.tools.build:gradle:8.6.1'
     }
 }
 
@@ -22,10 +23,11 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 29
+    namespace "com.bhagya.flutter_social_content_share"
+    compileSdkVersion 34
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 28
     }
     lintOptions {
         disable 'InvalidPackage'
