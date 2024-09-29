@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    String platformVersion;
+    String? platformVersion;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       platformVersion = await FlutterSocialContentShare.platformVersion;
@@ -36,14 +36,16 @@ class _MyAppState extends State<MyApp> {
     // setState to update our non-existent appearance.
     if (!mounted) return;
 
-    setState(() {
-      _platformVersion = platformVersion;
-    });
+    if (platformVersion != null) {
+      setState(() {
+        _platformVersion = platformVersion!;
+      });
+    }
   }
 
   /// SHARE ON FACEBOOK CALL
   shareOnFacebook() async {
-    String result = await FlutterSocialContentShare.share(
+    String? result = await FlutterSocialContentShare.share(
         type: ShareType.facebookWithoutImage,
         url: "https://www.apple.com",
         quote: "captions");
@@ -52,7 +54,7 @@ class _MyAppState extends State<MyApp> {
 
   /// SHARE ON INSTAGRAM CALL
   shareOnInstagram() async {
-    String result = await FlutterSocialContentShare.share(
+    String? result = await FlutterSocialContentShare.share(
         type: ShareType.instagramWithImageUrl,
         imageUrl:
             "https://post.healthline.com/wp-content/uploads/2020/09/healthy-eating-ingredients-732x549-thumbnail-732x549.jpg");
@@ -61,14 +63,14 @@ class _MyAppState extends State<MyApp> {
 
   /// SHARE ON WHATSAPP CALL
   shareWatsapp() async {
-    String result = await FlutterSocialContentShare.shareOnWhatsapp(
+    String? result = await FlutterSocialContentShare.shareOnWhatsapp(
         "0000000", "Text Appear hear");
     print(result);
   }
 
   /// SHARE ON EMAIL CALL
   shareEmail() async {
-    String result = await FlutterSocialContentShare.shareOnEmail(
+    String? result = await FlutterSocialContentShare.shareOnEmail(
         recipients: ["xxxx.xxx@gmail.com"],
         subject: "Subject appears here",
         body: "Body appears here",
@@ -78,7 +80,7 @@ class _MyAppState extends State<MyApp> {
 
   /// SHARE ON SMS CALL
   shareSMS() async {
-    String result = await FlutterSocialContentShare.shareOnSMS(
+    String? result = await FlutterSocialContentShare.shareOnSMS(
         recipients: ["xxxxxx"], text: "Text appears here");
     print(result);
   }

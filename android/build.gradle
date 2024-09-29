@@ -25,7 +25,6 @@ apply plugin: 'com.android.library'
 android {
     namespace "com.bhagya.flutter_social_content_share"
     compileSdkVersion 34
-
     defaultConfig {
         minSdkVersion 28
     }

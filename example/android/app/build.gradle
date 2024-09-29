@@ -27,7 +27,6 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 android {
     namespace "com.bhagya.flutter_social_content_share_example"
     compileSdkVersion 34
-
     lintOptions {
         disable 'InvalidPackage'
     }
