@@ -5,7 +5,7 @@ buildscript {
     ext.kotlinVersion = "2.0.20"
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
@@ -16,7 +16,7 @@ buildscript {
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
@@ -34,12 +34,12 @@ android {
 }
 
 dependencies {
-    implementation 'com.facebook.android:facebook-share:5.9.0'
+    implementation 'com.facebook.android:facebook-share:17.0.0'
     implementation 'com.karumi:dexter:6.2.0'
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
     implementation('com.github.bumptech.glide:glide:4.8.0-20180619.011009-9', {
         exclude group: "com.android.support"
     })
-    implementation 'com.github.bumptech.glide:glide:4.10.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 }
